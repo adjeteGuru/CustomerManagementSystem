@@ -1,0 +1,10 @@
+﻿@attribute [Route("/customerlist/create")]
+@inherits CreateCustomerComponent
+
+<div>
+    <button id="add-customer" class="btn btn-primary" @onclick="@(_ => CustomerModal.OpenCustomerModal())">
+        Add Customer
+    </button>
+    
+    <UpdateCustomerModal @ref="CustomerModal"/>
+</div>

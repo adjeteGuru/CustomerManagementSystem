@@ -1,0 +1,62 @@
+﻿@page "/customerdetail/{Id:int}"
+@inherits CustomerDetailComponent
+@rendermode RenderMode.InteractiveServer
+@rendermode InteractiveAuto
+
+<EditForm EditContext="EditContext">
+   @if (Customer == null && ErrorMessage == null)
+   {
+       <div class="empty-state">
+           <span class="empty-state-title">Loading, please wait...</span>
+       </div>
+   }
+   else if (ErrorMessage != null)
+   {
+        <h3 class="text-danger">@ErrorMessage</h3>
+   }
+   else
+   {
+       <div>
+           <div class="form-group">
+               <label for="name">FullName</label>
+               <InputText id="name"
+                          class="form-control"
+                          @bind-Value="Customer.FullName"/>
+           </div>
+           <div class="form-group">
+               <label for="Address">Address</label>
+               <InputText id="Address"
+                          class="form-control"
+                          @bind-Value="Customer.Address" />
+           </div>
+           <div class="form-group">
+               <label for="Postcode">Postcode</label>
+               <InputText id="Postcode"
+                          class="form-control"
+                          @bind-Value="Customer.PostCode" />
+           </div>
+           <div class="form-group">
+               <label for="Telephone">Telephone</label>
+               <InputText id="Telephone"
+                          class="form-control"
+                          @bind-Value="Customer.Telephone" />
+           </div>
+       </div>
+       <br/>
+       <div class="btn-group" role="group">
+           <button id="customer-update"
+                   class="btn btn-outline-primary"
+                   @onclick="@(async ()=> await ProcessCustomerUpdate())"
+                   title="Update customer">
+               Update
+           </button>
+           &nbsp;
+           <button id="customer-delete"
+                   class="btn btn-outline-danger"
+                   @onclick="Cancel"
+                   title="Cancel customer">
+               Cancel
+           </button>
+       </div>
+   }
+</EditForm>

@@ -1,0 +1,36 @@
+﻿@inherits UpdateCustomerModalComponent
+
+<EditForm EditContext="EditContext">
+    <div>
+            <div class="form-group">
+                <label for="name">FullName</label>
+                <InputText id="name"
+                           class="form-control"
+                           @bind-Value="CustomerToAdd.FullName"/>
+            </div>
+            <div class="form-group">
+                <label for="Address">Address</label>
+                <InputText id="Address"
+                           class="form-control"
+                       @bind-Value="CustomerToAdd.Address" />
+            </div>
+            <div class="form-group">
+                <label for="Postcode">Postcode</label>
+                <InputText id="Postcode"
+                           class="form-control"
+                       @bind-Value="CustomerToAdd.PostCode" />
+            </div>
+            <div class="form-group">
+                <label for="Telephone">Telephone</label>
+                <InputText id="Telephone"
+                           class="form-control"
+                       @bind-Value="CustomerToAdd.Telephone" />
+            </div>
+    </div>
+    <br/>
+    <div>
+        <button id="cancel" class="btn btn-secondary" @onclick="@CloseModal">Cancel</button>
+        <button id="save" class="btn btn-primary ml-2" @onclick="Submit">Save</button>
+    </div>
+</EditForm>
+

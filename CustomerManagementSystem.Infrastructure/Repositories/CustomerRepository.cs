@@ -90,5 +90,10 @@ namespace CustomerManagementSystem.Infrastructure.Repositories
         {
             return _context.Customers.Any(c => c.FullName.ToLower().Equals(name.ToLower()));
         }
+
+        public Task<Department> GetDepartmentByCustomerIdAsync(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

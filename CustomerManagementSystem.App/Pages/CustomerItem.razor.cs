@@ -1,4 +1,4 @@
-﻿using CustomerManagementSystem.Core.Models;
+﻿using CustomerManagementSystem.Core.DTOs;
 using CustomerManagementSystem.Core.Providers;
 using Microsoft.AspNetCore.Components;
 
@@ -12,8 +12,8 @@ namespace CustomerManagementSystem.App.Pages
         [Inject]
         private NavigationManager Navigation { get; set; } = default!;
 
-        [Parameter] 
-        public Customer Customer { get; set; }
+        [Parameter]
+        public CustomerRead Customer { get; set; }
 
         public async Task RemoveCustomer(int id)
         {

@@ -1,7 +1,5 @@
 ﻿@page "/customerdetail/{Id:int}"
 @inherits CustomerDetailComponent
-@rendermode RenderMode.InteractiveServer
-@rendermode InteractiveAuto
 
 <EditForm EditContext="EditContext">
    @if (Customer == null && ErrorMessage == null)

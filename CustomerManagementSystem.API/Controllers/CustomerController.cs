@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CustomerManagementSystem.API.Extensions;
 using CustomerManagementSystem.Infrastructure.DTOs;
 using CustomerManagementSystem.Infrastructure.Models;
 using CustomerManagementSystem.Infrastructure.Services;
@@ -32,9 +33,9 @@ namespace CustomerManagementSystem.API.Controllers
                 {
                     return NotFound();
                 }
-
-                var mappedCustomer = _mapper.Map<IEnumerable<CustomerRead>>(customers);
-                return Ok(mappedCustomer);
+                var departements = await _customerService.GetAllDepartmentsAsync();
+                var customerReads = customers.ConvertToDto(departements);               
+                return Ok(customerReads);
             }
             catch (Exception ex)
             {

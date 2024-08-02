@@ -48,5 +48,13 @@ namespace CustomerManagementSystem.App.Pages
         {
             Navigation.NavigateTo("/customerlist/create");
         }
+
+        public async Task AddCustomer(CustomerAddDTo customerAdd)
+        {
+            //await CustomersDataProvider.RemoveCustomerAsync(id);
+            var result = await CustomersDataProvider.CreateCustomerAsync(customerAdd);
+            StateHasChanged();
+            Navigation.NavigateTo("/customerlist");
+        }
     }
 }

@@ -46,13 +46,7 @@ namespace CustomerManagementSystem.Infrastructure.Repositories
 
         public async Task<IEnumerable<Customer>> GetAllCustomersAsync()
         {
-            var customers = await _context.Customers.ToListAsync();
-
-            if (!customers.Any())
-            {
-                throw new Exception("no customer found in the db!");
-            }
-
+            var customers = await _context.Customers.ToListAsync();          
             return customers;
         }
 
@@ -94,6 +88,11 @@ namespace CustomerManagementSystem.Infrastructure.Repositories
         public Task<Department> GetDepartmentByCustomerIdAsync(int customerId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Department>> GetAllDepartmentsAsync()
+        {
+            return await _context.Departments.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

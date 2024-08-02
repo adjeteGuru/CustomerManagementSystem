@@ -1,22 +1,24 @@
 ﻿@inherits CustomerItemComponent
 
-<a href="/customerdetail/@Customer.Id">
+@*<a href="/customerdetail/@Customer.Id">*@
     <div id="customer-content">
     <div class="d-flex justify-content-between align-items-center">
         @*<div class="col-sm-8 col-md-9 col-lg-10">*@
             <div class="form-control">
             <div class="d-flex">
                 <div class="text-break">
+                    <a href="/customerdetail/@Customer.Id">
                     <span id="customer-name" class="text-break font-weight-bold d-block text-area">
-                        <b>@Customer.FullName, @Customer.Address</b>
+                        <b>@Customer.FullName</b>
                     </span>
-                   @* <span id="customer-details" class="text-muted d-block">
+                    </a>
+                    <span id="customer-details" class="text-muted d-block">
                         @Customer.Address
-                    </span>*@
+                    </span>
                 </div>
             </div>
         </div>
-        @*<div class="btn-group" role="group">
+       @* <div class="btn-group" role="group">
             <button id="customer-delete"
                     class="btn btn-outline-danger"
                     @onclick="() => RemoveCustomer(Customer.Id)"
@@ -27,5 +29,5 @@
     </div>
 </div>
 
-</a>
+@*</a>*@
 

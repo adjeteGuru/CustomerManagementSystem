@@ -15,11 +15,11 @@ namespace CustomerManagementSystem.App.Pages
         [Parameter]
         public CustomerRead Customer { get; set; }
 
-        public async Task RemoveCustomer(int id)
-        {
-            await CustomersDataProvider.RemoveCustomerAsync(id);
-            StateHasChanged();
-            Navigation.NavigateTo("/customerlist");
-        }
+        //public async Task RemoveCustomer(int id)
+        //{
+        //    await CustomersDataProvider.RemoveCustomerAsync(id);
+        //    StateHasChanged();
+        //    Navigation.NavigateTo("/customerlist");
+        //}
     }
 }

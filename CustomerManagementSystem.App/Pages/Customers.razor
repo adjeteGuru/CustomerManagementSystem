@@ -1,0 +1,9 @@
+﻿@inherits CustomersComponent
+
+@foreach (var customer in Customers)
+ {                  
+    @* <div class="col-md-3 mb-2">*@
+         <div class="form-control-sm">
+       <CustomerItem Customer="@customer"></CustomerItem>
+     </div>      
+ }

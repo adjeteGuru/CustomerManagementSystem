@@ -1,4 +1,4 @@
-﻿using CustomerManagementSystem.Core.Models;
+﻿using CustomerManagementSystem.Core.DTOs;
 using CustomerManagementSystem.Core.Providers;
 using Microsoft.AspNetCore.Components;
 
@@ -12,7 +12,7 @@ namespace CustomerManagementSystem.App.Pages
         [Inject]
         private NavigationManager Navigation { get; set; } = default!;
         
-        public List<Customer> Customers { get; set; }
+        public List<CustomerRead> Customers { get; set; }
 
         public string ErrorMessage { get; set; }
 
@@ -20,7 +20,7 @@ namespace CustomerManagementSystem.App.Pages
         {
             try
             {
-                Customers = new List<Customer>();
+                Customers = new List<CustomerRead>();
                 var customers = await CustomersDataProvider.GetAllCustomersAsync();
                 Customers.AddRange(customers);
             }
@@ -30,9 +30,23 @@ namespace CustomerManagementSystem.App.Pages
             }
         }
 
+        protected IOrderedEnumerable<IGrouping<int, CustomerRead>> GetGroupedCustomersByDepartment()
+        {
+            var data = from customer in Customers
+                       group customer by customer.DepartmentId into customerByDepartGroup
+                       orderby customerByDepartGroup.Key
+                       select customerByDepartGroup;
+            return data;
+        }
+
+        protected string GetDepartmentName(IGrouping<int, CustomerRead> groupedCustomers)
+        {
+            return groupedCustomers.FirstOrDefault(x => x.DepartmentId == groupedCustomers.Key)!.DepartmentName;
+        }
+
         public void NavigateToCreate()
         {
             Navigation.NavigateTo("/customerlist/create");
-        }
+        }       
     }
 }

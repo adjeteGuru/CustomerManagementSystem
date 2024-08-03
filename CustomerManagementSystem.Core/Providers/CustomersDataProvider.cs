@@ -18,7 +18,7 @@ namespace CustomerManagementSystem.Core.Providers
             _client = client;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<Customer>> GetAllCustomersAsync()
+        public async Task<IEnumerable<CustomerRead>> GetAllCustomersAsync()
         {
             var response = await _client.GetAsync(RequestUri);
             try
@@ -32,8 +32,8 @@ namespace CustomerManagementSystem.Core.Providers
                         throw new Exception("Not found!");
                     }
 
-                    var customers = _mapper.Map<IEnumerable<Customer>>(customersDto);
-                    return customers;
+                    //var customers = _mapper.Map<IEnumerable<Customer>>(customersDto);
+                    return customersDto;
                 }
             }
             catch (Exception e)
@@ -44,7 +44,7 @@ namespace CustomerManagementSystem.Core.Providers
             return null;
         }
 
-        public async Task<Customer> GetCustomerByIdAsync(int id)
+        public async Task<CustomerRead> GetCustomerByIdAsync(int id)
         {
             var response = await _client.GetAsync($"{RequestUri}/{id}");
             try
@@ -58,9 +58,9 @@ namespace CustomerManagementSystem.Core.Providers
                         throw new Exception("Not found!");
                     }
 
-                    var customer = _mapper.Map<Customer>(customerDto);
+                   // var customer = _mapper.Map<Customer>(customerDto);
 
-                    return customer;
+                    return customerDto;
                 }
             }
             catch (Exception e)
@@ -71,7 +71,7 @@ namespace CustomerManagementSystem.Core.Providers
             return null;
         }
 
-        public async Task<Customer> RemoveCustomerAsync(int id)
+        public async Task<CustomerRead> RemoveCustomerAsync(int id)
         {
             var response = await _client.DeleteAsync($"{RequestUri}/{id}");
             try
@@ -87,9 +87,9 @@ namespace CustomerManagementSystem.Core.Providers
                         throw new Exception("Not found!");
                     }
 
-                    var customer = _mapper.Map<Customer>(customerDto);
+                    //var customer = _mapper.Map<Customer>(customerDto);
 
-                    return customer;
+                    return customerDto;
                 }
             }
             catch (Exception e)

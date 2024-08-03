@@ -2,8 +2,7 @@
 @page "/customerlist"
 @inherits CustomerListComponent
 
-<div class="my-3 d-flex flex-wrap justify-content-between">
-    <h3>Customers</h3>
+<div class="my-3 d-flex flex-wrap justify-content-between"> 
     <button id="customer-create" class="btn btn-primary" @onclick="NavigateToCreate">Create Customer</button>
 </div>
 
@@ -21,14 +20,29 @@ else
 {
    @if (Customers.Count > 0)
    {
-       @foreach (var customer in Customers)
-       {
-           <div class="list-group">
-               <a href="@($"/customerdetail/{customer.Id}")" class="list-group-item list-group-item-action">
-                   <CustomerItem Customer="customer"/>
-               </a>
-           </div>
-       }
+      <h3 class="mb-5">Customers</h3>
+
+      @foreach (var customerGrp in GetGroupedCustomersByDepartment())
+      {
+          <h4>Department: @GetDepartmentName(customerGrp)</h4>
+           
+          <div class="row">  
+              <Customers Customers="@customerGrp"></Customers>
+              <br>
+              <br>              
+              <div>
+              <button id="customer-create"
+                      class="btn btn-outline-primary"
+                      @onclick="NavigateToCreate"
+                      title="Add customer">
+                  Add Customer
+              </button>
+              </div>       
+              <br>
+              <br>              
+              <hr>
+          </div>
+      }
    }
    else
    {

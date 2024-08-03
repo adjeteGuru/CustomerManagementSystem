@@ -1,5 +1,4 @@
 ﻿using CustomerManagementSystem.Core.DTOs;
-using CustomerManagementSystem.Core.Models;
 using CustomerManagementSystem.Core.Providers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -8,15 +7,15 @@ namespace CustomerManagementSystem.App.Pages
 {
     public class CustomerDetailComponent : ComponentBase
     {
-        [Inject] 
+        [Inject]
         public ICustomersDataProvider CustomersDataProvider { get; set; }
 
         [Inject]
         private NavigationManager Navigation { get; set; } = default!;
-        
-        public Customer Customer { get; set; }
 
-        [Parameter] 
+        public CustomerRead Customer { get; set; }
+
+        [Parameter]
         public EditContext EditContext { get; set; }
 
         [Parameter]
@@ -26,7 +25,7 @@ namespace CustomerManagementSystem.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Customer = new Customer();
+            Customer = new CustomerRead();
             EditContext = new EditContext(Customer);
 
             try
@@ -38,7 +37,7 @@ namespace CustomerManagementSystem.App.Pages
                 ErrorMessage = e.Message;
             }
         }
-       
+
         public async Task ProcessCustomerUpdate()
         {
             await RunUpdateDetails();
@@ -53,7 +52,8 @@ namespace CustomerManagementSystem.App.Pages
                 FullName = Customer.FullName,
                 Address = Customer.Address,
                 PostCode = Customer.PostCode,
-                Telephone = Customer.Telephone
+                Telephone = Customer.Telephone,
+                DepartmentName = Customer.DepartmentName,
             };
 
             await CustomersDataProvider.UpdateCustomerAsync(customerDto);

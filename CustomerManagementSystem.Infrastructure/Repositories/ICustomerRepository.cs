@@ -10,5 +10,8 @@ namespace CustomerManagementSystem.Infrastructure.Repositories
         Task<Customer> GetCustomerByIdAsync(int id);
         Task DeleteCustomerAsync(int id);
         bool SaveChanges();
+        Task<Department> GetDepartmentByCustomerIdAsync(int customerId);
+        Task<Department> GetDepartmentByCustomerDepartNameAsync(string departName);
+        Task<IEnumerable<Department>> GetAllDepartmentsAsync();
     }
 }

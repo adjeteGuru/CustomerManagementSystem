@@ -36,5 +36,20 @@ namespace CustomerManagementSystem.Infrastructure.Services
         {
             await _customerRepository.DeleteCustomerAsync(id);
         }
+
+        public async Task<IEnumerable<Department>> GetAllDepartmentsAsync()
+        {
+            return await _customerRepository.GetAllDepartmentsAsync();
+        }
+
+        public async Task<Department> GetDepartmentByCustomerDepartNameAsync(string departName)
+        {
+            return await _customerRepository.GetDepartmentByCustomerDepartNameAsync(departName);
+        }
+
+        public async Task<Department> GetDepartmentByCustomerIdAsync(int id)
+        {
+            return await _customerRepository.GetDepartmentByCustomerIdAsync(id);
+        }
     }
 }

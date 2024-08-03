@@ -83,16 +83,23 @@ namespace CustomerManagementSystem.Infrastructure.Repositories
         private bool CustomerExistCheck(string name)
         {
             return _context.Customers.Any(c => c.FullName.ToLower().Equals(name.ToLower()));
-        }
+        }      
 
-        public Task<Department> GetDepartmentByCustomerIdAsync(int customerId)
+        public async Task<Department> GetDepartmentByCustomerDepartNameAsync(string departName)
         {
-            throw new NotImplementedException();
+            var department = await _context.Departments.FirstOrDefaultAsync(x => x.Name.ToLower().Equals(departName.ToLower().Trim()));         
+            return department;
         }
 
         public async Task<IEnumerable<Department>> GetAllDepartmentsAsync()
         {
             return await _context.Departments.OrderBy(x => x.Name).ToListAsync();
+        }
+
+        public async Task<Department> GetDepartmentByCustomerIdAsync(int customerId)
+        {
+            var department = await _context.Departments.FirstOrDefaultAsync(x => x.Id.Equals(customerId));
+            return department;
         }
     }
 }

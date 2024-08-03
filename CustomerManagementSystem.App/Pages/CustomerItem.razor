@@ -2,9 +2,8 @@
 
 @*<a href="/customerdetail/@Customer.Id">*@
     <div id="customer-content">
-    <div class="d-flex justify-content-between align-items-center">
-        @*<div class="col-sm-8 col-md-9 col-lg-10">*@
-            <div class="form-control">
+    <div class="d-flex justify-content-between align-items-center">       
+        <div class="form-control">
             <div class="d-flex">
                 <div class="text-break">
                     <a href="/customerdetail/@Customer.Id">
@@ -13,19 +12,11 @@
                     </span>
                     </a>
                     <span id="customer-details" class="text-muted d-block">
-                        @Customer.Address
+                        @Customer.Address, @Customer.PostCode, @Customer.Telephone
                     </span>
                 </div>
             </div>
-        </div>
-       @* <div class="btn-group" role="group">
-            <button id="customer-delete"
-                    class="btn btn-outline-danger"
-                    @onclick="() => RemoveCustomer(Customer.Id)"
-                    title="Remove customer">
-                Remove
-            </button>
-        </div>*@
+        </div>     
     </div>
 </div>
 

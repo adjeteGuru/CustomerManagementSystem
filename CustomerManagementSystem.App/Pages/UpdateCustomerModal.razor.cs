@@ -49,7 +49,7 @@ namespace CustomerManagementSystem.App.Pages
         }
 
         private async Task SaveAsync(CustomerAddDTo customerAdd)
-        {
+        {            
             var result = await CustomersDataProvider.CreateCustomerAsync(customerAdd);
             if (result == null)
             {

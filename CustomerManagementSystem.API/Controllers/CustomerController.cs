@@ -51,8 +51,11 @@ namespace CustomerManagementSystem.API.Controllers
             try
             {
                 var customer = await _customerService.GetCustomerByIdAsync(id);
+                var department = await _customerService.GetDepartmentByCustomerIdAsync(customer.Id);
 
-                return Ok(_mapper.Map<CustomerRead>(customer));
+                var customerRead = customer.ConvertToDto(department);
+
+                return Ok(customerRead);
             }
             catch (Exception ex)
             {
@@ -66,7 +69,9 @@ namespace CustomerManagementSystem.API.Controllers
         {
             try
             {
-                var customer = _mapper.Map<Customer>(customerAdd);
+                var departement = await _customerService.GetDepartmentByCustomerDepartNameAsync(customerAdd.DepartmentName);
+                
+                var customer = customerAdd.ConvertToDto(departement);                          
 
                 _customerService.AddCustomer(customer);
 

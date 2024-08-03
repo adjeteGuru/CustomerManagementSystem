@@ -21,5 +21,30 @@ namespace CustomerManagementSystem.API.Extensions
                 DepartmentName = department.Name,
             }).ToList();
         }
+
+        public static Customer ConvertToDto(this CustomerAddDTo customerAdd, Department department)
+        {
+            return new Customer
+            {
+                FullName = customerAdd.FullName,
+                Address = customerAdd.Address,
+                PostCode = customerAdd.PostCode,
+                Telephone = customerAdd.Telephone,
+                DepartmentId = department.Id
+            };
+        }
+
+        public static CustomerRead ConvertToDto(this Customer customerAdd, Department department)
+        {
+            return new CustomerRead
+            {
+                FullName = customerAdd.FullName,
+                Address = customerAdd.Address,
+                PostCode = customerAdd.PostCode,
+                Telephone = customerAdd.Telephone,
+                DepartmentId = department.Id, 
+                DepartmentName = department.Name
+            };
+        }
     }
 }

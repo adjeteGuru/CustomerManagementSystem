@@ -24,21 +24,24 @@ else
 
       @foreach (var customerGrp in GetGroupedCustomersByDepartment())
       {
-          <h4>@GetDepartmentName(customerGrp)</h4>
-
-           <div class="row mt-3">           
+          <h4>Department: @GetDepartmentName(customerGrp)</h4>
+           
+          <div class="row">  
               <Customers Customers="@customerGrp"></Customers>
-           </div>
-           <hr class="mb-3"/>
-
-            <div class="btn-group" role="group">
-            <button id="customer-create"
-                    class="btn btn-outline-primary"
-                    @onclick="() => AddCustomer(null)"
-                    title="Add customer">
-                Add Customer
-            </button>
-        </div>
+              <br>
+              <br>              
+              <div>
+              <button id="customer-create"
+                      class="btn btn-outline-primary"
+                      @onclick="NavigateToCreate"
+                      title="Add customer">
+                  Add Customer
+              </button>
+              </div>       
+              <br>
+              <br>              
+              <hr>
+          </div>
       }
    }
    else

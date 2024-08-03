@@ -10,5 +10,7 @@ namespace CustomerManagementSystem.Infrastructure.Services
         Task<Customer> GetCustomerByIdAsync(int id);
         Task DeleteCustomerAsync(int id);
         Task<IEnumerable<Department>> GetAllDepartmentsAsync();
+        Task<Department> GetDepartmentByCustomerIdAsync(int id);
+        Task<Department> GetDepartmentByCustomerDepartNameAsync(string departName);
     }
 }

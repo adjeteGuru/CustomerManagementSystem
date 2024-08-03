@@ -52,7 +52,8 @@ namespace CustomerManagementSystem.App.Pages
                 FullName = Customer.FullName,
                 Address = Customer.Address,
                 PostCode = Customer.PostCode,
-                Telephone = Customer.Telephone
+                Telephone = Customer.Telephone,
+                DepartmentName = Customer.DepartmentName,
             };
 
             await CustomersDataProvider.UpdateCustomerAsync(customerDto);

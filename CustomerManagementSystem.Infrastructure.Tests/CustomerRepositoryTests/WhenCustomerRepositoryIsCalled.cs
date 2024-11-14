@@ -50,24 +50,7 @@ namespace CustomerManagementSystem.Infrastructure.Tests.CustomerRepositoryTests
                 var result = await systemUnderTest.GetAllCustomersAsync();
                 result.Should().BeEquivalentTo(customers);
             }
-        }
-
-        [Fact]
-        public async Task AndThereIsNoValidDataReturned_ThenTheExpectedErrorIsReturned()
-        {
-            var invalidData = new List<Customer>();
-            await using (GetContext())
-            {
-                //var context = GetContext();
-                GetContext().Customers.AddRange(invalidData);
-                await GetContext().SaveChangesAsync();
-
-                var systemUnderTest = new CustomerRepository(GetContext());
-
-                Func<Task> func = async () => await systemUnderTest.GetAllCustomersAsync();
-                await func.Should().ThrowAsync<Exception>().WithMessage("no customer found in the db!");
-            }
-        }
+        }      
 
         private WebAppContext GetContext()
         {

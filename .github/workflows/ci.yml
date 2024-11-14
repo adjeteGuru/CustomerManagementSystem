@@ -1,28 +1,21 @@
 # 
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: dotnet build
-
+name: Trigger External Workflow
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+    branches:
+      - main
 jobs:
-  build:
-
+  trigger:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - name: Trigger External Workflow
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.everest-preview+json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/adjeteGuru/CustomerManagementSystem/dispatches \
+            -d '{"event_type": "trigger-event", "client_payload": {}}'
+          ```[_{{{CITATION{{{_1{How to trigger a GitHub action workflow in another repository](https://dev.to/ngnijland/how-to-trigger-a-github-action-workflow-in-another-repository-k3k)
+
+

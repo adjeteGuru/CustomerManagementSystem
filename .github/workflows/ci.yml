@@ -5,7 +5,7 @@ name: Trigger External Workflow
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   trigger:
     runs-on: ubuntu-latest

@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagementSystem.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerManagementSystem.API.Tests", "CustomerManagementSystem.API.Tests\CustomerManagementSystem.API.Tests.csproj", "{B537E0EB-11A4-4C58-8FD2-F01810EF4303}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagementSystem.AcceptanceTest", "CustomerManagementSystem.AcceptanceTest\CustomerManagementSystem.AcceptanceTest.csproj", "{6E3997CB-14B9-432B-8475-6E8C64609AEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B537E0EB-11A4-4C58-8FD2-F01810EF4303}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B537E0EB-11A4-4C58-8FD2-F01810EF4303}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B537E0EB-11A4-4C58-8FD2-F01810EF4303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3997CB-14B9-432B-8475-6E8C64609AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3997CB-14B9-432B-8475-6E8C64609AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3997CB-14B9-432B-8475-6E8C64609AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3997CB-14B9-432B-8475-6E8C64609AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

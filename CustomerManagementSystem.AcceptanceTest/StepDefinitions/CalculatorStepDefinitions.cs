@@ -36,5 +36,13 @@ namespace CustomerManagementSystem.AcceptanceTest.StepDefinitions
         {
             total += result;
         }
+
+
+        //[Then(@"it shows")]
+        //public void ThenItShows()
+        //{
+        //    throw new PendingStepException();
+        //}
+
     }
 }
